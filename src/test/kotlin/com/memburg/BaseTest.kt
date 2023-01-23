@@ -19,7 +19,6 @@ open class BaseTest {
 
     @AfterTest
     fun tearDown() {
-        Thread.sleep(5000)
         this.driver!!.quit()
     }
 }

@@ -13,28 +13,71 @@ class MainPage(private val driver: WebDriver) {
         PageFactory.initElements(driver, this)
     }
 
+    @FindBy(xpath = "//a[@href='/register'][@data-test='get-started-top']")
+    private var buttonGetStarted: WebElement? = null
+    
+    @FindBy(xpath = "//button[contains(@data-test, 'language-de')]")
+    private var buttonGermanCourse: WebElement? = null
+
+    @FindBy(xpath = "//span[contains(text(), 'YouTube')]")
+    private var buttonYouTubeRadio: WebElement? = null
+
+    @FindBy(xpath = "//span[contains(text(), 'Continue')]")
+    private var buttonContinue: WebElement? = null
+
+    @FindBy(xpath = "//div[contains(text(), 'Family & Friends')]")
+    private var buttonFamilyRadio: WebElement? = null
+
+    @FindBy(xpath = "//span[contains(text(), 'Intense')]")
+    private var buttonSeriousGoal: WebElement? = null
+
+    @FindBy(xpath = "//button[@data-test='not-now']")
+    private var buttonNotNow: WebElement? = null
+
+    // @FindBy(xpath = "//button//img[@draggable='false']")
+    // private var buttonLesson: WebElement? = null
+
+    // @FindBy(xpath = "//a[contains(text(), 'Start')]")
+    // private var startLesson: WebElement? = null
+
     private val wait = WebDriverWait(driver, Duration.ofSeconds(10))
 
-    @FindBy(xpath = "//span[contains(text(), 'I ALREADY HAVE AN ACCOUNT')]")
-    private var buttonAlreadyHaveAnAccount: WebElement? = null
+    fun setInitialGoals() {
+        wait.until(ExpectedConditions.elementToBeClickable(buttonGetStarted!!))
+        buttonGetStarted!!.click()
 
-    @FindBy(xpath = "//input[@data-test='email-input']")
-    private var inputEmail: WebElement? = null
+        wait.until(ExpectedConditions.elementToBeClickable(buttonGermanCourse!!))
+        buttonGermanCourse!!.click()
 
-    @FindBy(xpath = "//input[@data-test='password-input']")
-    private var inputPassword: WebElement? = null
+        wait.until(ExpectedConditions.elementToBeClickable(buttonYouTubeRadio!!))
+        buttonYouTubeRadio!!.click()
 
-    @FindBy(xpath = "//span[contains(text(), 'LOG IN')]")
-    private var buttonLogIn: WebElement? = null
+        wait.until(ExpectedConditions.elementToBeClickable(buttonContinue!!))
+        buttonContinue!!.click()
 
-    fun performLogin() {
-        wait.until(ExpectedConditions.elementToBeClickable(buttonAlreadyHaveAnAccount!!))
-        buttonAlreadyHaveAnAccount!!.click()
-        wait.until(ExpectedConditions.visibilityOf(inputEmail!!))
-        inputEmail!!.sendKeys("email@email.com")
-        wait.until(ExpectedConditions.visibilityOf(inputPassword!!))
-        inputPassword!!.sendKeys("password123..")
-        wait.until(ExpectedConditions.elementToBeClickable(buttonLogIn!!))
-        buttonLogIn!!.click()
+        wait.until(ExpectedConditions.elementToBeClickable(buttonFamilyRadio!!))
+        buttonFamilyRadio!!.click()
+
+        wait.until(ExpectedConditions.elementToBeClickable(buttonContinue!!))
+        buttonContinue!!.click()
+
+        wait.until(ExpectedConditions.elementToBeClickable(buttonSeriousGoal!!))
+        buttonSeriousGoal!!.click()
+
+        wait.until(ExpectedConditions.elementToBeClickable(buttonContinue!!))
+        buttonContinue!!.click()
+
+        wait.until(ExpectedConditions.elementToBeClickable(buttonContinue!!))
+        buttonContinue!!.click()
+
+        wait.until(ExpectedConditions.elementToBeClickable(buttonNotNow!!))
+        buttonNotNow!!.click()
     }
+
+    // fun startFirstLesson() {
+    //     wait.until(ExpectedConditions.elementToBeClickable(buttonLesson!!))
+    //     buttonLesson!!.click()
+    //     wait.until(ExpectedConditions.elementToBeClickable(startLesson!!))
+    //     startLesson!!.click()
+    // }
 }

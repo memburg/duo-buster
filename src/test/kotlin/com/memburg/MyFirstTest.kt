@@ -9,7 +9,7 @@ class MyFirstTest: BaseTest() {
 
     @Test
     fun openWebDriver() {
-        mainPage.performLogin()
+        mainPage.setInitialGoals()
     }
 
     @BeforeTest
